@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yaneura – Cours de violon en ligne | Sachiko Kuroiwa</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #faf6f0;
+    --beige: #f0e8da;
+    --terracotta: #c4714a;
+    --terracotta-light: #d98b68;
+    --terracotta-dark: #a05535;
+    --brown: #6b4226;
+    --text: #3a2a1e;
+    --text-light: #7a5c48;
+    --gold: #b8935a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--text);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.2rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(250,246,240,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(180,140,100,0.15);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--terracotta-dark);
+    letter-spacing: 0.05em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--terracotta); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 3rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -10%;
+    right: -5%;
+    width: 55%;
+    height: 120%;
+    background: radial-gradient(ellipse at center, rgba(196,113,74,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '♩';
+    position: absolute;
+    right: 8%;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 28rem;
+    color: rgba(196,113,74,0.06);
+    pointer-events: none;
+    font-family: serif;
+    line-height: 1;
+  }
+
+  .hero-content {
+    max-width: 680px;
+    animation: fadeUp 1s ease both;
+  }
+
+  .hero-tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .hero-tag::before {
+    content: '';
+    display: block;
+    width: 2rem;
+    height: 1px;
+    background: var(--terracotta);
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--brown);
+    margin-bottom: 1.5rem;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-light);
+    max-width: 520px;
+    margin-bottom: 2.5rem;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.9rem 2.2rem;
+    background: var(--terracotta);
+    color: white;
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: background 0.3s, transform 0.2s;
+  }
+
+  .btn:hover {
+    background: var(--terracotta-dark);
+    transform: translateY(-2px);
+  }
+
+  .btn-outline {
+    background: transparent;
+    border: 1px solid var(--terracotta);
+    color: var(--terracotta);
+    margin-left: 1rem;
+  }
+
+  .btn-outline:hover {
+    background: var(--terracotta);
+    color: white;
+  }
+
+  /* DIVIDER */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0 3rem;
+    margin: 1rem 0;
+  }
+
+  .divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+
+  .divider-icon {
+    color: var(--gold);
+    font-size: 1rem;
+  }
+
+  /* SECTION BASE */
+  section {
+    padding: 6rem 3rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-tag {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 0.8rem;
+  }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 300;
+    color: var(--brown);
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+
+  h2 em { font-style: italic; color: var(--terracotta); }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+    margin-top: 3rem;
+  }
+
+  .about-text p {
+    font-size: 1rem;
+    line-height: 1.9;
+    color: var(--text-light);
+    margin-bottom: 1.2rem;
+  }
+
+  .about-highlights {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .highlight-item {
+    padding: 1.5rem;
+    background: var(--beige);
+    border-left: 3px solid var(--terracotta);
+  }
+
+  .highlight-item strong {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--brown);
+    margin-bottom: 0.3rem;
+  }
+
+  .highlight-item span {
+    font-size: 0.88rem;
+    color: var(--text-light);
+    line-height: 1.6;
+  }
+
+  /* BIO */
+  .bio-section {
+    background: var(--beige);
+    padding: 5rem 3rem;
+    margin: 0;
+    max-width: 100%;
+  }
+
+  .bio-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .bio-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    margin-top: 2.5rem;
+    align-items: start;
+  }
+
+  .bio-name-block {
+    position: sticky;
+    top: 6rem;
+  }
+
+  .bio-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--brown);
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+  }
+
+  .bio-name-jp {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    letter-spacing: 0.05em;
+  }
+
+  .bio-line {
+    width: 2.5rem;
+    height: 2px;
+    background: var(--terracotta);
+    margin: 1rem 0;
+  }
+
+  .bio-text p {
+    font-size: 0.95rem;
+    line-height: 1.9;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+  }
+
+  /* COURSES */
+  .courses-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .course-card {
+    padding: 2.5rem 2rem;
+    border: 1px solid rgba(180,140,100,0.25);
+    background: white;
+    position: relative;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .course-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(106,66,38,0.1);
+  }
+
+  .course-card.featured {
+    background: var(--terracotta);
+    color: white;
+    border-color: var(--terracotta);
+  }
+
+  .course-emoji {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .course-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-bottom: 0.8rem;
+    color: var(--brown);
+  }
+
+  .course-card.featured h3 { color: white; }
+
+  .course-card p {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: var(--text-light);
+  }
+
+  .course-card.featured p { color: rgba(255,255,255,0.85); }
+
+  /* PRICING */
+  .pricing-section {
+    background: var(--beige);
+    padding: 5rem 3rem;
+    margin: 0;
+    max-width: 100%;
+  }
+
+  .pricing-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .pricing-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 2px;
+    position: relative;
+  }
+
+  .pricing-card.highlight {
+    background: var(--brown);
+    color: white;
+  }
+
+  .pricing-badge {
+    display: inline-block;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.8rem;
+    background: var(--terracotta);
+    color: white;
+    margin-bottom: 1rem;
+  }
+
+  .pricing-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+    color: var(--brown);
+  }
+
+  .pricing-card.highlight h3 { color: white; }
+
+  .pricing-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    font-weight: 300;
+    color: var(--terracotta);
+    margin: 0.8rem 0 0.3rem;
+    line-height: 1;
+  }
+
+  .pricing-card.highlight .pricing-price { color: var(--terracotta-light); }
+
+  .pricing-unit {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    margin-bottom: 1.2rem;
+  }
+
+  .pricing-card.highlight .pricing-unit { color: rgba(255,255,255,0.6); }
+
+  .pricing-features {
+    list-style: none;
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: var(--text-light);
+  }
+
+  .pricing-card.highlight .pricing-features { color: rgba(255,255,255,0.8); }
+
+  .pricing-features li {
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(180,140,100,0.12);
+    display: flex;
+    gap: 0.6rem;
+  }
+
+  .pricing-card.highlight .pricing-features li {
+    border-bottom-color: rgba(255,255,255,0.1);
+  }
+
+  .pricing-features li::before {
+    content: '✦';
+    color: var(--terracotta);
+    flex-shrink: 0;
+    font-size: 0.6rem;
+    margin-top: 0.3rem;
+  }
+
+  .pricing-card.highlight .pricing-features li::before {
+    color: var(--terracotta-light);
+  }
+
+  .pricing-note {
+    margin-top: 2.5rem;
+    padding: 1.2rem 1.5rem;
+    background: rgba(196,113,74,0.08);
+    border-left: 3px solid var(--terracotta);
+    font-size: 0.85rem;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+
+  /* FREE TRIAL */
+  .trial-banner {
+    background: var(--terracotta);
+    color: white;
+    text-align: center;
+    padding: 4rem 3rem;
+  }
+
+  .trial-banner h2 {
+    color: white;
+    margin-bottom: 0.8rem;
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  }
+
+  .trial-banner p {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 2rem;
+  }
+
+  .btn-white {
+    background: white;
+    color: var(--terracotta-dark);
+    padding: 0.9rem 2.5rem;
+    display: inline-block;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: opacity 0.3s;
+  }
+
+  .btn-white:hover { opacity: 0.9; }
+
+  /* CONTACT */
+  .contact-section {
+    padding: 6rem 3rem;
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .contact-section p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-light);
+    margin-bottom: 2rem;
+  }
+
+  .contact-email {
+    display: inline-block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    color: var(--terracotta);
+    text-decoration: none;
+    border-bottom: 1px solid var(--terracotta);
+    padding-bottom: 0.2rem;
+    transition: color 0.3s;
+  }
+
+  .contact-email:hover { color: var(--terracotta-dark); }
+
+  /* FOOTER */
+  footer {
+    background: var(--brown);
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    padding: 2.5rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+  }
+
+  footer strong {
+    color: rgba(255,255,255,0.9);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.2rem; }
+    .hero { padding: 7rem 1.5rem 3rem; }
+    section { padding: 4rem 1.5rem; }
+    .about-grid, .bio-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .courses-grid { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .bio-section, .pricing-section { padding: 4rem 1.5rem; }
+    .btn-outline { margin-left: 0; margin-top: 1rem; display: block; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Yaneura Violon</div>
+  <ul class="nav-links">
+    <li><a href="#about">À propos</a></li>
+    <li><a href="#bio">Biographie</a></li>
+    <li><a href="#cours">Cours</a></li>
+    <li><a href="#tarifs">Tarifs</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">Cours de violon en ligne · Paris</div>
+    <h1>Apprenez le violon<br>avec une <em>artiste</em><br>basée à Paris.</h1>
+    <p class="hero-sub">
+      Cours individuels en ligne avec Sachiko Kuroiwa, violoniste professionnelle forte de plus de 20 ans d'expérience en Europe. De débutant à avancé, pour enfants et adultes.
+    </p>
+    <a href="#cours" class="btn">Découvrir les cours</a>
+    <a href="#contact" class="btn btn-outline">Essai gratuit</a>
+  </div>
+</div>
+
+<div class="divider"><span class="divider-icon">✦</span></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-tag">Bienvenue</div>
+  <h2>La musique comme <em>voyage intérieur</em></h2>
+  <div class="about-grid">
+    <div class="about-text fade-in">
+      <p>
+        Bonjour, je suis Sachiko Kuroiwa, violoniste basée à Paris depuis 2004. Mon parcours m'a conduite de l'Orchestre Symphonique de Milan sous la direction de Riccardo Chailly à l'Opéra de Paris, en passant par les salles de concert de toute l'Europe.
+      </p>
+      <p>
+        Enseigner est devenu ma plus grande passion. Chaque leçon est une aventure : les progrès de mes élèves nourrissent mes propres découvertes, créant une chaîne magique d'apprentissage mutuel.
+      </p>
+      <p>
+        Apprendre un instrument ne se résume pas à jouer des notes — c'est un chemin vers la connaissance de soi, la concentration, la créativité. Je vous invite à vivre cette expérience, quel que soit votre âge ou votre niveau.
+      </p>
+    </div>
+    <div class="about-highlights fade-in">
+      <div class="highlight-item">
+        <strong>🌍 Cours en français, anglais et japonais</strong>
+        <span>Choisissez la langue dans laquelle vous vous sentez le plus à l'aise.</span>
+      </div>
+      <div class="highlight-item">
+        <strong>🎶 Tous niveaux, de 7 ans à l'âge adulte</strong>
+        <span>Débutants complets, adultes reprenant le violon, ou musiciens avancés cherchant à progresser.</span>
+      </div>
+      <div class="highlight-item">
+        <strong>💻 100 % en ligne, partout dans le monde</strong>
+        <span>Cours en visioconférence depuis votre domicile, selon votre emploi du temps.</span>
+      </div>
+      <div class="highlight-item">
+        <strong>🎓 Méthodes internationales</strong>
+        <span>Méthode Suzuki, répertoire classique européen, et bien plus — adapté à chacun.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><span class="divider-icon">✦</span></div>
+
+<!-- BIO -->
+<div class="bio-section" id="bio">
+  <div class="bio-inner">
+    <div class="section-tag">Biographie</div>
+    <h2>Un parcours <em>européen</em> d'exception</h2>
+    <div class="bio-grid">
+      <div class="bio-name-block fade-in">
+        <div class="bio-name">Sachiko<br>Kuroiwa</div>
+        <div class="bio-name-jp">黒岩 幸子</div>
+        <div class="bio-line"></div>
+        <p style="font-size:0.82rem;color:var(--text-light);line-height:1.7;">Violoniste · Pédagogue<br>Paris, France</p>
+      </div>
+      <div class="bio-text fade-in">
+        <p>Diplômée de l'Université Toho Gakuen (Tokyo), Sachiko Kuroiwa s'est perfectionnée à l'Université de musique de Vienne auprès de Rainer Küchl, Konzertmeister des Wiener Philharmoniker. Elle a également étudié lors de masterclasses estivales avec Igor Oïstrakh.</p>
+        <p>De 1999 à 2004, elle occupe un poste de premier violon au sein de l'Orchestra Sinfonica di Milano, placée sous la direction de Riccardo Chailly. Elle se produit ensuite comme musicienne indépendante avec la Philharmonie de Liège et des ensembles de chambre à Bruxelles.</p>
+        <p>À Paris, elle se forme auprès de Geneviève Simonon, ancienne soliste de l'Opéra de Paris et héritière de la méthode Doucan, et participe au programme pédagogique du violoniste français Gilles Apap.</p>
+        <p>De 2008 à 2015, elle est musicienne extra à l'Opéra National de Paris. Elle enseigne actuellement le violon et le solfège à l'association Carillon (Paris 20e) tout en développant une activité de cours en ligne à l'international.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COURSES -->
+<section id="cours">
+  <div class="section-tag">Offre pédagogique</div>
+  <h2>Des cours <em>adaptés</em> à chaque profil</h2>
+  <div class="courses-grid">
+    <div class="course-card fade-in">
+      <span class="course-emoji">🎻</span>
+      <h3>Cours Enfants</h3>
+      <p>Pour les 7–12 ans. Séances de 30 à 40 minutes, à un rythme adapté à la concentration des plus jeunes. Apprentissage des bases avec bienveillance et enthousiasme.</p>
+    </div>
+    <div class="course-card featured fade-in">
+      <span class="course-emoji">🌟</span>
+      <h3>Cours Adultes</h3>
+      <p>Dès 12 ans et sans limite d'âge. Il n'est jamais trop tard pour apprendre le violon. Des élèves de 40 à 80 ans progressent chaque semaine avec joie et détermination.</p>
+    </div>
+    <div class="course-card fade-in">
+      <span class="course-emoji">🏛️</span>
+      <h3>Orchestre Académie</h3>
+      <p>Programme intensif pour musiciens avancés souhaitant intégrer un orchestre professionnel ou améliorer leur niveau orchestral. Répertoire symphonique et conseils d'audition.</p>
+    </div>
+  </div>
+  <div class="course-card fade-in" style="margin-top:2rem;padding:2rem;border:1px solid rgba(180,140,100,0.25);background:var(--beige);">
+    <strong style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--brown);display:block;margin-bottom:0.8rem;">🎼 Solfège en ligne</strong>
+    <p style="font-size:0.88rem;line-height:1.7;color:var(--text-light);">Vous ne savez pas lire la musique ? Pas de problème ! Des cours de solfège clairs et progressifs pour apprendre à déchiffrer les partitions et comprendre le rythme — en complément idéal du violon.</p>
+  </div>
+</section>
+
+<div class="divider"><span class="divider-icon">✦</span></div>
+
+<!-- PRICING -->
+<div class="pricing-section" id="tarifs">
+  <div class="pricing-inner">
+    <div class="section-tag">Tarifs</div>
+    <h2>Des tarifs <em>transparents</em> et accessibles</h2>
+
+    <div class="pricing-grid">
+      <div class="pricing-card fade-in">
+        <div class="pricing-badge">Cours à l'unité</div>
+        <h3>Cours individuel · 60 min</h3>
+        <div class="pricing-price">45 €</div>
+        <div class="pricing-unit">par séance · dès 12 ans et adultes</div>
+        <ul class="pricing-features">
+          <li>Cours en visioconférence</li>
+          <li>Tous niveaux</li>
+          <li>Répertoire au choix de l'élève</li>
+          <li>Paiement par virement ou PayPal</li>
+        </ul>
+      </div>
+
+      <div class="pricing-card fade-in">
+        <div class="pricing-badge">Cours à l'unité</div>
+        <h3>Cours Enfants · 30–40 min</h3>
+        <div class="pricing-price">35 €</div>
+        <div class="pricing-unit">par séance · 7 à 12 ans</div>
+        <ul class="pricing-features">
+          <li>Format adapté aux enfants</li>
+          <li>Méthode Suzuki et autres</li>
+          <li>Progression douce et bienveillante</li>
+          <li>Paiement par virement ou PayPal</li>
+        </ul>
+      </div>
+
+      <div class="pricing-card highlight fade-in">
+        <div class="pricing-badge">Abonnement mensuel</div>
+        <h3>Abonnement · 60 min × 4</h3>
+        <div class="pricing-price">160 €</div>
+        <div class="pricing-unit">par mois · dès 12 ans et adultes</div>
+        <ul class="pricing-features">
+          <li>4 cours d'une heure par mois</li>
+          <li>Tarif avantageux</li>
+          <li>Planification flexible</li>
+          <li>Suivi personnalisé et régulier</li>
+        </ul>
+      </div>
+
+      <div class="pricing-card fade-in">
+        <div class="pricing-badge">Abonnement mensuel</div>
+        <h3>Abonnement · 30 min × 4</h3>
+        <div class="pricing-price">120 €</div>
+        <div class="pricing-unit">par mois · dès 7 ans</div>
+        <ul class="pricing-features">
+          <li>4 cours de 30 min par mois</li>
+          <li>Idéal pour les jeunes élèves</li>
+          <li>Progression régulière et motivante</li>
+          <li>Paiement par virement ou PayPal</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pricing-card fade-in" style="margin-top:2rem;border:1px solid rgba(180,140,100,0.25);">
+      <div class="pricing-badge">Programme spécialisé</div>
+      <h3>Orchestre Académie · 90 min</h3>
+      <div class="pricing-price">55 €</div>
+      <div class="pricing-unit">par séance · tarif réduit pour étudiants (sur demande)</div>
+      <ul class="pricing-features" style="margin-top:0.8rem;">
+        <li>Répertoire orchestral approfondi (Don Juan, Héros et Vie, symphonies Schumann…)</li>
+        <li>Conseils pour les auditions d'orchestre</li>
+        <li>Expérience des concours en Allemagne, Italie et France</li>
+        <li>Séminaires en ligne avec musiciens d'orchestres internationaux (à venir)</li>
+      </ul>
+    </div>
+
+    <div class="pricing-note fade-in">
+      <strong style="color:var(--brown);font-family:'Cormorant Garamond',serif;">🎼 Solfège · </strong>
+      30 € la séance de 45 min — ou 20 € en complément d'un cours de violon.<br>
+      <br>
+      Les cours ont lieu après 17h00 (heure japonaise) en raison du décalage horaire avec Paris. Paiement par virement bancaire ou PayPal.
+    </div>
+  </div>
+</div>
+
+<!-- FREE TRIAL -->
+<div class="trial-banner">
+  <h2>Cours d'essai gratuit · 30 minutes</h2>
+  <p>Pas encore convaincu(e) ? Essayez un cours sans engagement. Contactez-moi pour réserver votre séance découverte !</p>
+  <a href="#contact" class="btn-white">Réserver mon essai gratuit</a>
+</div>
+
+<!-- CONTACT -->
+<div class="contact-section" id="contact">
+  <div class="section-tag">Contact</div>
+  <h2>Prenons <em>contact</em></h2>
+  <p>
+    Pour toute question, inscription ou réservation d'un cours d'essai, n'hésitez pas à m'écrire. Je vous répondrai dans les meilleurs délais.
+  </p>
+  <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:1.5rem;">
+    ✉️ Merci d'indiquer votre niveau, votre âge (ou celui de l'enfant), et vos disponibilités.
+  </p>
+  <a href="mailto:kuroiwa.72@gmail.com" class="contact-email">kuroiwa.72@gmail.com</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <strong>Yaneura Violon en ligne · Sachiko Kuroiwa</strong>
+  © 2025 · Paris, France · Cours de violon en ligne · Tous droits réservés
+</footer>
+
+<script>
+  // Scroll fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(el => {
+      if (el.isIntersecting) {
+        el.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
