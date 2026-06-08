@@ -81,15 +81,6 @@
   .nav-links a:hover { color: var(--terracotta); }
 
   /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    padding: 8rem 3rem 4rem;
-    position: relative;
-    overflow: hidden;
-  }
-
   .hero::before {
     content: '';
     position: absolute;
@@ -115,8 +106,35 @@
   }
 
   .hero-content {
-    max-width: 680px;
+    max-width: 580px;
     animation: fadeUp 1s ease both;
+    flex: 1;
+  }
+
+  .hero-photo {
+    flex: 0 0 420px;
+    position: relative;
+    animation: fadeUp 1.2s ease both;
+  }
+
+  .hero-photo img {
+    width: 100%;
+    height: 580px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 2px;
+    box-shadow: 20px 20px 60px rgba(106,66,38,0.2);
+  }
+
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+    padding: 8rem 5rem 4rem;
+    position: relative;
+    overflow: hidden;
   }
 
   .hero-tag {
@@ -599,7 +617,9 @@
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; }
     .nav-links { gap: 1.2rem; }
-    .hero { padding: 7rem 1.5rem 3rem; }
+    .hero { padding: 7rem 1.5rem 3rem; flex-direction: column; gap: 2rem; }
+    .hero-photo { flex: none; width: 100%; }
+    .hero-photo img { height: 320px; }
     section { padding: 4rem 1.5rem; }
     .about-grid, .bio-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     .courses-grid { grid-template-columns: 1fr; }
@@ -633,6 +653,9 @@
     </p>
     <a href="#cours" class="btn">Découvrir les cours</a>
     <a href="#contact" class="btn btn-outline">Essai gratuit</a>
+  </div>
+  <div class="hero-photo">
+    <img src="photo.jpg" alt="Sachiko Kuroiwa, violoniste à Paris">
   </div>
 </div>
 
