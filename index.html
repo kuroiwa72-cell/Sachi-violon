@@ -295,7 +295,32 @@
     line-height: 1.6;
   }
 
-  /* BIO */
+  /* SECTION COLORS */
+  .about-section-wrap {
+    background: #3a2a1e;
+    padding: 6rem 3rem;
+  }
+
+  .about-section-wrap .section-tag { color: #d98b68; }
+  .about-section-wrap h2 { color: white; }
+  .about-section-wrap h2 em { color: #d98b68; }
+  .about-section-wrap .about-text p { color: rgba(255,255,255,0.8); }
+  .about-section-wrap .highlight-item { background: rgba(255,255,255,0.08); border-left-color: #d98b68; }
+  .about-section-wrap .highlight-item strong { color: white; }
+  .about-section-wrap .highlight-item span { color: rgba(255,255,255,0.7); }
+
+  .courses-section-wrap {
+    background: #1a3a2a;
+    padding: 6rem 3rem;
+  }
+
+  .courses-section-wrap .section-tag { color: #7ec8a0; }
+  .courses-section-wrap h2 { color: white; }
+  .courses-section-wrap h2 em { color: #7ec8a0; }
+  .courses-section-wrap .course-card { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.1); }
+  .courses-section-wrap .course-card h3 { color: white; }
+  .courses-section-wrap .course-card p { color: rgba(255,255,255,0.75); }
+  .courses-section-wrap .course-card.featured { background: #2d7a4f; border-color: #2d7a4f; }
   .bio-section {
     background: var(--beige);
     padding: 5rem 3rem;
@@ -517,7 +542,7 @@
 
   /* FREE TRIAL */
   .trial-banner {
-    background: var(--terracotta);
+    background: #2d7a4f;
     color: white;
     text-align: center;
     padding: 4rem 3rem;
@@ -566,16 +591,20 @@
 
   .contact-email {
     display: inline-block;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.3rem;
-    color: var(--terracotta);
+    font-family: 'Jost', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    color: white;
+    background: #2d7a4f;
     text-decoration: none;
-    border-bottom: 1px solid var(--terracotta);
-    padding-bottom: 0.2rem;
-    transition: color 0.3s;
+    padding: 1rem 2.5rem;
+    transition: background 0.3s, transform 0.2s;
   }
 
-  .contact-email:hover { color: var(--terracotta-dark); }
+  .contact-email:hover {
+    background: #1f5c3a;
+    transform: translateY(-2px);
+  }
 
   /* FOOTER */
   footer {
@@ -662,7 +691,7 @@
 
 <div class="divider"><span class="divider-icon">✦</span></div>
 
-<!-- ABOUT -->
+<div class="about-section-wrap">
 <section id="about">
   <div class="section-tag">Bienvenue</div>
   <h2>La musique comme <em>voyage intérieur</em></h2>
@@ -698,6 +727,7 @@
     </div>
   </div>
 </section>
+</div>
 
 <div class="divider"><span class="divider-icon">✦</span></div>
 
@@ -724,6 +754,7 @@
 </div>
 
 <!-- COURSES -->
+<div class="courses-section-wrap">
 <section id="cours">
   <div class="section-tag">Offre pédagogique</div>
   <h2>Des cours <em>adaptés</em> à chaque profil</h2>
@@ -744,11 +775,12 @@
       <p>Programme intensif pour musiciens avancés souhaitant intégrer un orchestre professionnel ou améliorer leur niveau orchestral. Répertoire symphonique et conseils d'audition.</p>
     </div>
   </div>
-  <div class="course-card fade-in" style="margin-top:2rem;padding:2rem;border:1px solid rgba(180,140,100,0.25);background:var(--beige);">
-    <strong style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--brown);display:block;margin-bottom:0.8rem;">🎼 Solfège en ligne</strong>
-    <p style="font-size:0.88rem;line-height:1.7;color:var(--text-light);">Vous ne savez pas lire la musique ? Pas de problème ! Des cours de solfège clairs et progressifs pour apprendre à déchiffrer les partitions et comprendre le rythme — en complément idéal du violon.</p>
+  <div class="course-card fade-in" style="margin-top:2rem;padding:2rem;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.06);">
+    <strong style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:white;display:block;margin-bottom:0.8rem;">🎼 Solfège en ligne</strong>
+    <p style="font-size:0.88rem;line-height:1.7;color:rgba(255,255,255,0.75);">Vous ne savez pas lire la musique ? Pas de problème ! Des cours de solfège clairs et progressifs pour apprendre à déchiffrer les partitions et comprendre le rythme — en complément idéal du violon.</p>
   </div>
 </section>
+</div>
 
 <div class="divider"><span class="divider-icon">✦</span></div>
 
